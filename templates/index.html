@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sentiment</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js">
+<!--    <link rel="stylesheet" href="./secondApp.css">-->
+<!--    <link rel="stylesheet" href="css.css">-->
+
+ <script>
+        // Function to set back the placeholder without clearing the input
+        function setPlaceholder() {
+            // Get the input element by its name attribute
+            var inputElement = document.querySelector('input[name="sentence"]');
+
+            // Get the original placeholder text from the input element
+            var originalPlaceholder = inputElement.getAttribute("placeholder");
+
+            // Set the placeholder back to its original value
+            inputElement.setAttribute("placeholder", originalPlaceholder);
+        }
+    </script>
+
+
+
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:weight@100;200;300;400;500;600;700;800&display=swap");
+
+
+       body{
+        background-color:#eee;
+        font-family: "Poppins", sans-serif;
+        font-weight: 300;
+       }
+
+       .height{
+        height: 100vh;
+       }
+
+
+       .search{
+       position: relative;
+       box-shadow: 0 0 40px rgba(51, 51, 51, .1);
+
+       }
+
+       .search input{
+
+        height: 60px;
+        text-indent: 25px;
+        border: 2px solid #d6d4d4;
+
+
+       }
+
+
+       .search input:focus{
+
+        box-shadow: none;
+        border: 2px solid blue;
+
+
+       }
+
+       .search .fa-search{
+
+        position: absolute;
+        top: 20px;
+        left: 16px;
+
+       }
+
+       .search button{
+
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        height: 50px;
+        width: 110px;
+        background: blue;
+
+       }
+    </style>
+
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:weight@100;200;300;400;500;600;700;800&display=swap");
+
+
+       body{
+        background-color:#eee;
+        font-family: "Poppins", sans-serif;
+        font-weight: 300;
+       }
+
+       .height{
+        height: 100vh;
+       }
+
+
+       .search{
+       position: relative;
+       box-shadow: 0 0 40px rgba(51, 51, 51, .1);
+
+       }
+
+       .search input{
+
+        height: 60px;
+        text-indent: 25px;
+        border: 2px solid #d6d4d4;
+
+
+       }
+
+
+       .search input:focus{
+
+        box-shadow: none;
+        border: 2px solid blue;
+
+
+       }
+
+       .search .fa-search{
+
+        position: absolute;
+        top: 20px;
+        left: 16px;
+
+       }
+
+       .search button{
+
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        height: 50px;
+        width: 110px;
+        background: blue;
+
+       }
+        {#.Output{#}
+        {#  margin: 20px;#}
+        {#    height: 50px;#}
+        {#    padding: 12px;#}
+        {#    align-content: center;#}
+        {#    border: 2px solid seashell;#}
+        {#    background: burlywood;#}
+        {#}#}
+        {#.Output SPAN{#}
+        {#    color: aqua;#}
+        {#    font-family: "Helvetica Neue", sans-serif;#}
+        {#    font-weight: bold;#}
+        {#}#}
+
+         .Output {
+            margin-top: 20px;
+            padding: 30px;
+            border: 2px solid #f0f0f0;
+            background: #f8f8f8;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .Output SPAN {
+            color: #007bff;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<form action="http://127.0.0.1:5000/classify_sentiments" method="POST">
+    <div class="container">
+
+                    <div class="row height d-flex justify-content-center align-items-center">
+
+                      <div class="col-md-8">
+
+                        <div class="search">
+                          <i class="fa fa-search"></i>
+                          <input type="text" class="form-control" id="sentence" placeholder="yorumu girin" name="sentence" value="{{ request.args.get('sentence', '') }}">
+                          <button class="btn btn-primary" onclick="setPlaceholder()">PREDICT</button>
+
+                        </div >
+
+                          <div class="Output"> BU YORUM <SPAN>[{{ sentence }}] </SPAN> DUYGUSU <SPAN> {{message}}</SPAN>  VE BU SINIFIN  <SPAN>{{ sinif }}</SPAN>  ALTINDADIR</div>
+
+                      </div>
+
+                    </div>
+                </div>
+</form>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
